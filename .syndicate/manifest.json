@@ -2,8 +2,8 @@
   "documents": {
     "posts/eso-eks-pod-identity.md": {
       "devto": {
-        "content_hash": "41d575e0e9ec4a1ccd2470d8b97363f1c9a6ac4f32d79af04ed329db64aa057b",
-        "posted_at": "2026-10-05T13:50:17+00:00",
+        "content_hash": "04f414f12139bdb25fce2201edcd13cbbbcc6cc7bf70d77e99956eac0a402e85",
+        "posted_at": "2026-10-05T13:51:45+00:00",
         "remote_id": "4801958",
         "state": "draft",
         "url": "https://dev.to/nazmur96/getting-aws-secrets-into-eks-pods-with-eso-and-pod-identity-3ag4-temp-slug-9976502"
