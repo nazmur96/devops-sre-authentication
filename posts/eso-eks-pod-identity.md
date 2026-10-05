@@ -16,10 +16,8 @@ crosspost:
 
     Three things that bite: restart ESO after creating the association, because Pod Identity wires credentials only when a pod starts. Scope the IAM policy to just the secrets ESO needs. And env vars are read once, so a rotated secret needs a pod restart, a volume mount, or a tool like Reloader.
 
-    I wrote it up step by step, with the IAM policies, the ClusterSecretStore and ExternalSecret YAML, verification commands and a troubleshooting list:
+    I wrote it up step by step, with the IAM policies, the ClusterSecretStore and ExternalSecret YAML, verification commands and a troubleshooting list. Full write-up linked below.
 ---
-
-# Getting AWS Secrets into EKS Pods with ESO and Pod Identity
 
 So we have an app/microservice/pod which needs access to a secret that we
 stored in AWS Secrets Manager, let's say the database password.
