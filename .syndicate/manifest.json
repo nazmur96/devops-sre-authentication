@@ -3,10 +3,17 @@
     "posts/eso-eks-pod-identity.md": {
       "devto": {
         "content_hash": "04f414f12139bdb25fce2201edcd13cbbbcc6cc7bf70d77e99956eac0a402e85",
-        "posted_at": "2026-10-05T13:51:45+00:00",
+        "posted_at": "2026-10-05T13:54:14+00:00",
         "remote_id": "4801958",
-        "state": "draft",
-        "url": "https://dev.to/nazmur96/getting-aws-secrets-into-eks-pods-with-eso-and-pod-identity-3ag4-temp-slug-9976502"
+        "state": "published",
+        "url": "https://dev.to/nazmur96/getting-aws-secrets-into-eks-pods-with-eso-and-pod-identity-55if"
+      },
+      "linkedin": {
+        "content_hash": "9643af12e92f43c805b21cc9ada8c1dd40e44bd05ce73c93f1a619af36fa85c1",
+        "posted_at": "2026-10-05T13:54:15+00:00",
+        "remote_id": "urn:li:share:7512872787670335488",
+        "state": "published",
+        "url": "https://www.linkedin.com/feed/update/urn:li:share:7512872787670335488/"
       }
     }
   },
