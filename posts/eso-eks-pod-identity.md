@@ -7,6 +7,9 @@ crosspost:
   tags: [kubernetes, aws, security, devops]
   hashtags: [Kubernetes, AWS]
   canonical_url: https://github.com/nazmur96/devops-sre-authentication/blob/main/posts/eso-eks-pod-identity.md
+  linkedin_image:
+    path: img/eso-pod-identity.png
+    alt: "Diagram: inside an EKS cluster, the Pod Identity Agent gives the ESO pod temporary credentials for the IAM role ESO-Secrets-Reader. ESO calls GetSecretValue on AWS Secrets Manager, writes a Kubernetes Secret named database-secret and refreshes it every hour, and the app pod reads DB_PASSWORD from that Secret with no IAM role and no AWS keys."
   summary: |
     Your pod needs a database password that lives in AWS Secrets Manager. The clean answer: the app never talks to AWS at all. It reads a plain Kubernetes Secret, and a middleman fills that Secret for it. That middleman is External Secrets Operator (ESO), and EKS Pod Identity gives ESO its AWS access.
 
@@ -25,6 +28,8 @@ stored in AWS Secrets Manager, let's say the database password.
 We don't want our app to talk to AWS at all. We want the app to just find the
 password inside Kubernetes as a normal K8s Secret. So we bring in a middleman
 to fetch it for us: **ESO** (External Secrets Operator).
+
+![ESO and EKS Pod Identity: the app reads a K8s Secret, ESO fetches it from Secrets Manager using temporary credentials from the Pod Identity Agent](https://raw.githubusercontent.com/nazmur96/devops-sre-authentication/main/posts/img/eso-pod-identity.png)
 
 ## Part 1: Setup (done once)
 
