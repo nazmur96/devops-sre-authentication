@@ -1,0 +1,24 @@
+# Installed from nazmur96/syndicate (templates/syndicate.yml).
+# Push = dev.to DRAFT only. LinkedIn posts only via the manual publish run.
+name: Syndicate
+on:
+  push:
+    branches: [main]
+    paths: ['**/*.md']
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [draft, publish]
+        default: draft
+      paths:
+        description: 'Required to publish: the document to publish'
+permissions:
+  contents: write
+jobs:
+  syndicate:
+    uses: nazmur96/syndicate/.github/workflows/syndicate.yml@v1
+    with:
+      mode: ${{ inputs.mode || 'draft' }}
+      paths: ${{ inputs.paths || '' }}
+    secrets: inherit
