@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e2e8f0"/>
+    </marker>
+    <style>
+      .t  { font-family: 'Noto Sans', sans-serif; fill: #f8fafc; }
+      .m  { font-family: 'JetBrainsMono NF', 'DejaVu Sans Mono', monospace; }
+      .card { fill: #111c33; stroke: #334155; stroke-width: 2; }
+      .eso  { fill: #111c33; stroke: #ff9900; stroke-width: 3; }
+      .csi  { fill: #111c33; stroke: #4ade80; stroke-width: 3; }
+      .h  { font-family: 'Noto Sans', sans-serif; font-weight: 700; font-size: 26px; fill: #f8fafc; }
+      .s  { font-family: 'JetBrainsMono NF', 'DejaVu Sans Mono', monospace; font-size: 18px; fill: #94a3b8; }
+      .lbl{ font-family: 'Noto Sans', sans-serif; font-weight: 600; font-size: 20px; fill: #e2e8f0; }
+      .flow { stroke: #e2e8f0; stroke-width: 3; fill: none; marker-end: url(#a); }
+    </style>
+  </defs>
+
+  <rect width="1080" height="1350" fill="#0b1220"/>
+
+  <!-- headline -->
+  <text x="60" y="88" class="m" font-size="22" font-weight="700" fill="#ff9900" letter-spacing="3">EKS × AWS SECRETS MANAGER</text>
+  <text x="60" y="160" class="t" font-size="54" font-weight="800">Same secret. Two delivery routes.</text>
+  <text x="60" y="210" class="t" font-size="26" fill="#94a3b8">Where does the password end up, and who holds the AWS role?</text>
+
+  <!-- shared source -->
+  <rect x="290" y="250" width="500" height="96" rx="16" class="card"/>
+  <text x="540" y="292" class="h" text-anchor="middle">AWS Secrets Manager</text>
+  <text x="540" y="324" class="s" text-anchor="middle">payments/db  {username, password}</text>
+
+  <!-- column headers -->
+  <text x="270" y="420" class="m" font-size="24" font-weight="700" fill="#ff9900" text-anchor="middle">ESO</text>
+  <text x="810" y="420" class="m" font-size="24" font-weight="700" fill="#4ade80" text-anchor="middle">CSI DRIVER + ASCP</text>
+  <line x1="540" y1="390" x2="540" y2="1170" stroke="#334155" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <path class="flow" d="M400,346 L320,382"/>
+  <path class="flow" d="M680,346 L760,382"/>
+
+  <!-- ESO column -->
+  <rect x="60" y="450" width="420" height="120" rx="16" class="eso"/>
+  <text x="270" y="495" class="h" text-anchor="middle">ESO controller</text>
+  <text x="270" y="528" class="s" text-anchor="middle">holds the IAM role</text>
+  <text x="270" y="554" class="s" text-anchor="middle">polls every refreshInterval</text>
+
+  <path class="flow" d="M270,570 L270,630"/>
+
+  <rect x="60" y="640" width="420" height="120" rx="16" class="eso"/>
+  <text x="270" y="685" class="h" text-anchor="middle">Kubernetes Secret</text>
+  <text x="270" y="718" class="s" text-anchor="middle">a copy in the API / etcd</text>
+  <text x="270" y="744" class="s" text-anchor="middle">base64, not encryption</text>
+
+  <path class="flow" d="M270,760 L270,820"/>
+
+  <rect x="60" y="830" width="420" height="120" rx="16" class="eso"/>
+  <text x="270" y="875" class="h" text-anchor="middle">App pod</text>
+  <text x="270" y="908" class="s" text-anchor="middle">env vars or Secret volume</text>
+  <text x="270" y="934" class="s" text-anchor="middle">no IAM role, no AWS SDK</text>
+
+  <!-- CSI column -->
+  <rect x="600" y="450" width="420" height="120" rx="16" class="csi"/>
+  <text x="810" y="495" class="h" text-anchor="middle">ASCP + CSI driver</text>
+  <text x="810" y="528" class="s" text-anchor="middle">DaemonSet on each node</text>
+  <text x="810" y="554" class="s" text-anchor="middle">fetches at volume mount</text>
+
+  <path class="flow" d="M810,570 L810,630"/>
+
+  <rect x="600" y="640" width="420" height="120" rx="16" class="csi"/>
+  <text x="810" y="685" class="h" text-anchor="middle">Files in the pod</text>
+  <text x="810" y="718" class="s" text-anchor="middle">/mnt/secrets-store/*</text>
+  <text x="810" y="744" class="s" text-anchor="middle">no Kubernetes Secret object</text>
+
+  <path class="flow" d="M810,760 L810,820"/>
+
+  <rect x="600" y="830" width="420" height="120" rx="16" class="csi"/>
+  <text x="810" y="875" class="h" text-anchor="middle">App pod</text>
+  <text x="810" y="908" class="s" text-anchor="middle">holds its OWN IAM role</text>
+  <text x="810" y="934" class="s" text-anchor="middle">reads files, not env vars</text>
+
+  <!-- gotchas -->
+  <rect x="60" y="990" width="420" height="180" rx="16" class="card"/>
+  <text x="84" y="1030" class="lbl" fill="#ff9900">Gotcha</text>
+  <text x="84" y="1066" class="t" font-size="20">Associate the role, then restart</text>
+  <text x="84" y="1096" class="t" font-size="20">ESO. Pod Identity wires creds</text>
+  <text x="84" y="1126" class="t" font-size="20">only when a pod is created.</text>
+
+  <rect x="600" y="990" width="420" height="180" rx="16" class="card"/>
+  <text x="624" y="1030" class="lbl" fill="#4ade80">Gotcha</text>
+  <text x="624" y="1066" class="t" font-size="20">EC2 nodes only, no Fargate.</text>
+  <text x="624" y="1096" class="t" font-size="20">The whole JSON is mounted too,</text>
+  <text x="624" y="1126" class="t" font-size="20">not just the jmesPath keys.</text>
+
+  <!-- footer -->
+  <rect x="60" y="1210" width="960" height="84" rx="16" fill="#1e293b"/>
+  <text x="540" y="1262" class="t" font-size="24" font-weight="600" text-anchor="middle">Neither one makes your app reload a rotated password.</text>
+</svg>
