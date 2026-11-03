@@ -19,10 +19,10 @@
     "posts/eso-vs-csi-driver-eks.md": {
       "devto": {
         "content_hash": "f39e896815f1bdbd1ef146fa9b7e898b3c43e6335deea6b454187c1869b832b5",
-        "posted_at": "2026-11-03T14:55:14+00:00",
+        "posted_at": "2026-11-03T14:55:58+00:00",
         "remote_id": "4969881",
-        "state": "draft",
-        "url": "https://dev.to/nazmur96/eso-vs-secrets-store-csi-driver-on-eks-two-ways-to-deliver-an-aws-secret-3kh0-temp-slug-9080174"
+        "state": "published",
+        "url": "https://dev.to/nazmur96/eso-vs-secrets-store-csi-driver-on-eks-two-ways-to-deliver-an-aws-secret-k45"
       }
     }
   },
